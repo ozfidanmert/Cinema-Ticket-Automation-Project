@@ -27,10 +27,10 @@ container.addEventListener('click', (e) => {
         const soru = confirm(`Bu koltuğu boş bırakmak istediğine emin misin?`)
         if (soru) {
             e.target.classList.remove('reserved')
+            calculateTotal();
         }
     }
 
-    // Toplam tutarı hesaplar
     payment(); // Ödeme butonunun durumunu günceller
 });
 
@@ -44,18 +44,18 @@ const seatHtml = (seatsAll) => {
 
 // Toplam tutarı hesaplar
 const calculateTotal = () => {
-    selectedSeats = document.querySelectorAll('.seat.selected'); // Seçili koltukları seçer
-    reservedSeats = document.querySelectorAll('.seat.reserved'); // Rezerve edilmiş koltukları seçer
+    selectedSeats = document.querySelectorAll('.seat.selected'); // Seçili koltukları yakalar
+    reservedSeats = document.querySelectorAll('.seat.reserved'); // Rezerve edilmiş koltukları yakalar
 
-    const selectedSeatIndex = Array.from(selectedSeats).map(seat => Array.from(seats).indexOf(seat)); // Seçili koltukların dizinlerini alır
+    
+    const selectedSeatIndex = Array.from(selectedSeats).map(seat => Array.from(seatsAll).indexOf(seat))
 
-    const reservedSeatIndex = Array.from(reservedSeats).map(seat => Array.from(seats).indexOf(seat)); // Rezerve edilmiş koltukların dizinlerini alır
+    const reservedSeatIndex = Array.from(reservedSeats).map(seat => Array.from(seatsAll).indexOf(seat))
 
 
     selectedSeat = selectedSeats.length; // Seçili koltuk sayısını günceller
-    count.textContent = Number(selectedSeat); // Seçili koltuk sayısını gösterir
+    count.textContent = parseInt(selectedSeat); // Seçili koltuk sayısını gösterir
     amount.textContent = select.value * selectedSeat; // Ödenecek tutarı hesaplar
-
 
 
     saveToLocalStorage(selectedSeatIndex, reservedSeatIndex); // Seçili koltukları local storage'a kaydeder
@@ -63,11 +63,11 @@ const calculateTotal = () => {
 
 
 
-
 // Local storage'a kaydeder
 const saveToLocalStorage = (selectedSeatIndex, reservedSeatIndex) => {
 
     localStorage.setItem("selectedSeats", JSON.stringify(selectedSeatIndex)); // Seçili koltukları local storage'a kaydeder
+
     localStorage.setItem('reservedSeats', JSON.stringify(reservedSeatIndex)); // Rezerve edilmiş koltukları local storage'a kaydeder
 };
 
@@ -76,8 +76,8 @@ const getFromLocalStorage = () => {
     const selectedSeatIndex = JSON.parse(localStorage.getItem('selectedSeats')); // Local storage'dan seçili koltukların dizinlerini alır
     const reservedSeatIndex = JSON.parse(localStorage.getItem('reservedSeats')); // Local storage'dan rezerve edilmiş koltukların dizinlerini alır
 
-    selectedSeatIndex.forEach(index => seats[index].classList.add('selected')); // Seçili koltukları işaretler
-    reservedSeatIndex.forEach(index => seats[index].classList.add('reserved')); // Rezerve edilmiş koltukları işaretler
+    selectedSeatIndex.forEach(index => seatsAll[index].classList.add('selected')); // Seçili koltukları işaretler
+    reservedSeatIndex.forEach(index => seatsAll[index].classList.add('reserved')); // Rezerve edilmiş koltukları işaretler
 };
 
 // Ödeme butonuna tıklama olayını dinler
