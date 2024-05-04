@@ -1,4 +1,4 @@
-const seats = document.querySelectorAll('.seat:not(.reserved)'); // Rezerve edilmemiş tüm koltukları seçer
+ const seats = document.querySelectorAll('.seat:not(.reserved)'); // Rezerve edilmemiş tüm koltukları seçer
 const seatsAll = document.querySelectorAll('.seat')
 const select = document.querySelector('#gun'); // select seçimini seçiciyi seçer
 const amount = document.querySelector('#amount'); // Ödenecek tutarı gösterir
@@ -14,12 +14,13 @@ let reservedSeats = []; // Rezerve edilmiş koltukları tutar
 let totalCiro = 0
 
 
+
+
 // Koltuklara tıklama olayını dinler
 container.addEventListener('click', (e) => {
     if (e.target.classList.contains("seat") && !e.target.classList.contains("reserved")) {
         e.target.classList.toggle("selected"); // Tıklanan koltuğun seçili durumunu değiştirir        
         calculateTotal(); // Toplam tutarı hesaplar
-        payment(); // Ödeme butonunun durumunu günceller
     }
 
     if (e.target.classList.contains('reserved')) {
@@ -31,9 +32,14 @@ container.addEventListener('click', (e) => {
 
     // Toplam tutarı hesaplar
     payment(); // Ödeme butonunun durumunu günceller
-
-
 });
+
+
+const seatHtml = (seatsAll) => {
+    seatsAll.forEach((seat) => {
+         seat.textContent = parseInt(seat.textContent) +1
+    })
+}
 
 
 // Toplam tutarı hesaplar
@@ -75,7 +81,7 @@ const getFromLocalStorage = () => {
 };
 
 // Ödeme butonuna tıklama olayını dinler
-payBtn.addEventListener('click', () => {
+payBtn.addEventListener('click', (e) => {
 
     const selectedSeatCount = selectedSeats.length
     const ticketPrice = parseInt(select.value)
@@ -84,7 +90,6 @@ payBtn.addEventListener('click', () => {
     totalCiro += totalTicketPrice
 
     alert(`Bu işlemle ${selectedSeatCount} adet bilet satıldı.\nToplam Tutar: ${totalTicketPrice} ₺`)
-
 
     selectedSeats.forEach(seat => {
         seat.classList.remove('selected'); // Seçili koltuklardan 'selected' sınıfını kaldırır
@@ -133,7 +138,7 @@ const payment = () => {
     }
 };
 
-
+seatHtml(seatsAll)
 // Local storage'dan verileri alır ve sayfayı günceller
 getFromLocalStorage();
 calculateTotal();
