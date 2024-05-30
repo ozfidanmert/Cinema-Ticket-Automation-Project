@@ -28,6 +28,5 @@
 <ul>
     <li><strong>HTML:</strong> For the structure and content of web pages.</li>
     <li><strong>CSS:</strong> For styling and layout.</li>
-    <li><strong>Bootstrap:</strong> For a responsive and consistent design.</li>
     <li><strong>JavaScript:</strong> For interactive elements and enhanced user experience.</li>
 </ul>
