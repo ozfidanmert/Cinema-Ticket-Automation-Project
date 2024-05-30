@@ -18,7 +18,6 @@
     <li><strong>Ticket Booking:</strong> Users can easily book cinema tickets by selecting the movie, price, and seat numbers.</li>
     <li><strong>Seat Selection:</strong> Customers can choose their preferred seat numbers from the available options.</li>
     <li><strong>Price Options:</strong> Various price options are available for different ticket types.</li>
-    <li><strong>Responsive Design:</strong> The application is fully responsive and works seamlessly on all devices.</li>
     <li><strong>Modern UI:</strong> The design offers a sleek and user-friendly interface for ticket booking.</li>
     <li><strong>Interactive Components:</strong> JavaScript is used to create interactive components such as dropdown menus and seat selection buttons.</li>
 </ul>
