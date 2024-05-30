@@ -10,7 +10,7 @@
 
 <!-- Proje Tanımı -->
 <h2>Project Description</h2>
-<p>This project is a Cinema Ticket Automation System developed using HTML, CSS, Bootstrap, and JavaScript. The main purpose of this application is to automate the process of selling cinema tickets to customers. Users can select the movie, choose the price, and specify the seat numbers they desire, providing a seamless and efficient ticket booking experience.</p>
+<p>This project is a Cinema Ticket Automation System developed using HTML, CSS and JavaScript. The main purpose of this application is to automate the process of selling cinema tickets to customers. Users can select the movie, choose the price, and specify the seat numbers they desire, providing a seamless and efficient ticket booking experience.</p>
 
 <!-- Features -->
 <h2>Features</h2>
